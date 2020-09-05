@@ -3,6 +3,8 @@
 
 GO_VERSION = "go1.15.1"
 
+VAGRANT_BOX = "roboxes/ubuntu2004"
+
 $go_install = <<~"SCRIPT"
 echo "#### INSTALLING GO ####"
 curl -OL https://golang.org/dl/go#{GO_VERSION}.linux-amd64.tar.gz
@@ -15,7 +17,7 @@ Vagrant.configure("2") do |config|
 
   config.vm.define "gobox" do |node|
 
-    node.vm.box = "roboxes/ubuntu2004"
+    node.vm.box = VAGRANT_BOX
 
     node.vm.synced_folder "./go-code/", "/home/vagrant/go-code/", type: "rsync"
 
