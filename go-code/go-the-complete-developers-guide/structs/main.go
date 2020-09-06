@@ -7,6 +7,8 @@ type person struct {
 	firstName string
 	lastName  string
 	contact   contactInfo // embedded struct
+	// Alternately you can ommit the property and use 'contactInfo' by itself
+	// contactInfo
 }
 
 type contactInfo struct {
@@ -38,10 +40,22 @@ func main() {
 	jim := person{
 		firstName: "Jim",
 		lastName:  "Parsons",
+		// contactInfo: contactInfo{} if immiting the 'contact' property in the struct
 		contact: contactInfo{
 			email:   "jp@bigbang.theory",
 			zipCode: 90210,
 		},
 	}
-	fmt.Printf("%+v", jim)
+	jim.print()
+	jim.updateName("Leonard")
+	jim.print()
+}
+
+// You can add reciever functions to structs
+func (p person) print() {
+	fmt.Printf("%+v", p)
+}
+
+func (p person) updateName(newFirstName string) {
+	p.firstName = newFirstName
 }
