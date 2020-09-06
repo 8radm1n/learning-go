@@ -46,9 +46,10 @@ func main() {
 			zipCode: 90210,
 		},
 	}
+	jimPointer := &jim
+	jimPointer.updateName("Leonard")
 	jim.print()
-	jim.updateName("Leonard")
-	jim.print()
+	jimPointer.print()
 }
 
 // You can add reciever functions to structs
@@ -59,6 +60,6 @@ func (p person) print() {
 // This does not work because go passes a copy of
 // the variable to the function. Go is a pass by
 // value language.
-func (p person) updateName(newFirstName string) {
-	p.firstName = newFirstName
+func (pointerToPerson *person) updateName(newFirstName string) {
+	(*pointerToPerson).firstName = newFirstName
 }
