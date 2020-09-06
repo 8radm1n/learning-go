@@ -60,6 +60,6 @@ func (p person) print() {
 // This does not work because go passes a copy of
 // the variable to the function. Go is a pass by
 // value language.
-func (pointerToPerson *person) updateName(newFirstName string) {
-	(*pointerToPerson).firstName = newFirstName
+func (p *person) updateName(newFirstName string) {
+	(*p).firstName = newFirstName
 }
