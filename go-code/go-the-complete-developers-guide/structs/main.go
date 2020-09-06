@@ -56,6 +56,9 @@ func (p person) print() {
 	fmt.Printf("%+v", p)
 }
 
+// This does not work because go passes a copy of
+// the variable to the function. Go is a pass by
+// value language.
 func (p person) updateName(newFirstName string) {
 	p.firstName = newFirstName
 }
