@@ -46,10 +46,15 @@ func main() {
 			zipCode: 90210,
 		},
 	}
-	jimPointer := &jim
-	jimPointer.updateName("Leonard")
+	// This is the long way to do it.
+	// jimPointer := &jim
+	// jimPointer.updateName("Leonard")
+
+	// Go will automatically grab the memory address if you have a function
+	// with a receiver type of *person so you dont have to create a transient
+	// variable 'jimPointer' provinding a nice shortcut.
+	jim.updateName("Leonard")
 	jim.print()
-	jimPointer.print()
 }
 
 // You can add reciever functions to structs
