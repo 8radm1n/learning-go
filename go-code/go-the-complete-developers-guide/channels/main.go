@@ -25,7 +25,7 @@ func main() {
 	// infinite loop
 	for {
 		// 3) Wait until something is received from the channel
-		// and set it back into the channel
+		// and send it back into the channel
 		go checkLink(<-c, c)
 
 	}
