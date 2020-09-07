@@ -29,13 +29,16 @@ func main() {
 	for l := range c {
 
 		// function literal syntax (Anonymous function, lambda, etc...)
-		go func() {
+		// When creating a child goroutine, you need to pass in the
+		// variable to the function literal otherwise you will be
+		// operating on an unexpected memory location.
+		go func(link string) {
 			// Putting a call to time.Sleep in a function literal ensures
 			// that the main goroutine does not block while waiting for
 			// the timer to expire.
 			time.Sleep(time.Second)
-			checkLink(l, c)
-		}()
+			checkLink(link, c)
+		}(l)
 
 	}
 
