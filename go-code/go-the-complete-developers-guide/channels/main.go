@@ -21,10 +21,14 @@ func main() {
 		// 2) Send links into the channel
 		go checkLink(link, c)
 	}
-	// 3) Wait until something is received from the channel
-	// This is a blocking line of code and the main routine
-	// will exit as soon as this code is executed.
-	fmt.Println(<-c)
+
+	for i := 0; i < len(links); i++ {
+		// 3) Wait until something is received from the channel
+		// This is a blocking call and will wait until something
+		// is recied on the channel.
+		fmt.Println(<-c)
+
+	}
 
 }
 
