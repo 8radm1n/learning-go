@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
@@ -26,9 +27,12 @@ func main() {
 	// for {}
 	// Alternale syntax for infinite loop with a channel
 	for l := range c {
-		// 3) Wait until something is received from the channel
-		// and send it back into the channel
-		go checkLink(l, c)
+
+		// function literal syntax (Anonymous function, lambda, etc...)
+		go func() {
+			time.Sleep(time.Second)
+			checkLink(l, c)
+		}()
 
 	}
 
