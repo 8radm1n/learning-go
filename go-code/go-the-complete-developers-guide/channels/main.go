@@ -30,6 +30,9 @@ func main() {
 
 		// function literal syntax (Anonymous function, lambda, etc...)
 		go func() {
+			// Putting a call to time.Sleep in a function literal ensures
+			// that the main goroutine does not block while waiting for
+			// the timer to expire.
 			time.Sleep(time.Second)
 			checkLink(l, c)
 		}()
