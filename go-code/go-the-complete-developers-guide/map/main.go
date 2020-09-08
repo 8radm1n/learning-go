@@ -24,7 +24,13 @@ func main() {
 	colours["black"] = "#000000"
 
 	// Delete keys from a map
-	delete(colours, "white")
+	// delete(colours, "white")
 
-	fmt.Println(colours)
+	printMap(colours)
+}
+
+func printMap(c map[string]string) {
+	for colour, hex := range c {
+		fmt.Printf("%v - %v \n", colour, hex)
+	}
 }
