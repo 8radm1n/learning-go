@@ -12,5 +12,19 @@ func main() {
 		"green": "#00ff00",
 		"blue":  "#0000ff",
 	}
+
+	// Alternate syntax to create a map
+	// with zero values assigned.
+	// var colours map[string]string
+	// or
+	// colours := make(map[string]string)
+
+	// Add values to a map
+	colours["white"] = "#ffffff"
+	colours["black"] = "#000000"
+
+	// Delete keys from a map
+	delete(colours, "white")
+
 	fmt.Println(colours)
 }
