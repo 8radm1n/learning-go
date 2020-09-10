@@ -5,20 +5,20 @@ import "fmt"
 type englishBot struct{}
 type spanishBot struct{}
 
+type bot interface {
+	getGreeting() string
+}
+
 func main() {
 	ebot := englishBot{}
 	sbot := spanishBot{}
 
-	ebot.printGreeting()
-	sbot.printGreeting()
+	printGreeting(ebot)
+	printGreeting(sbot)
 }
 
-func (eb englishBot) printGreeting() {
-	fmt.Println(eb.getGreeting())
-}
-
-func (sb spanishBot) printGreeting() {
-	fmt.Println(sb.getGreeting())
+func printGreeting(b bot) {
+	fmt.Println(b.getGreeting())
 }
 
 func (eb englishBot) getGreeting() string {
