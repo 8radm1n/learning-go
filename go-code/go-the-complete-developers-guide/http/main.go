@@ -12,5 +12,9 @@ func main() {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
-	fmt.Println(resp)
+	bs := make([]byte, 99999)
+	// The read function adds the content read
+	// to the byte slice passed into it.
+	resp.Body.Read(bs)
+	fmt.Println(string(bs))
 }
