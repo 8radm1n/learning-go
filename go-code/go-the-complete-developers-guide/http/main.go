@@ -7,11 +7,23 @@ import (
 	"os"
 )
 
+type logWriter struct{}
+
 func main() {
-	resp, err := http.Get("http://codingpackets.com")
+	resp, err := http.Get("http://google.com")
 	if err != nil {
 		fmt.Println("Error: ", err)
 		os.Exit(1)
 	}
-	io.Copy(os.Stdout, resp.Body)
+
+	lw := logWriter{}
+
+	io.Copy(lw, resp.Body)
+}
+
+// logWriter implements the Writer interface
+func (logWriter) Write(bs []byte) (int, error) {
+	fmt.Println(string(bs))
+	fmt.Println("Just wrote this many bites: ", len(bs))
+	return len(bs), nil
 }
